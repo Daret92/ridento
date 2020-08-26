@@ -1,0 +1,51 @@
+{% extends "core/core.html" %}
+{%block title%}Ridento{%endblock%}
+{%block titlepage%}Historias Clinicas{%endblock%}
+{%block body%}
+<div class="row">
+    <div class="col-10"></div>
+    <div class="col-2">
+        <a href="new_historial" class="btn btn-info">Nuevo Paciente</a>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Alta</th>
+                    <th>Nombre</th>
+                    <th>telefono</th>
+                    <th>Sexo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for item in pacientes%}
+                    <tr>
+                        <td>{{item.alta}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.telefono}}</td>
+                        <td>{{item.sexo}}</td>
+                        <td>
+                            <div class="row"><div class="col-3"></div><div class="col-3 text-center">
+                                <form>
+                                    <input type="hidden" value="{{item.id}}" name="id">
+                                    <button type="submit" name="edit" class="btn btn-info" value="true"><i class="fas fa-edit"></i></button>
+                                </form>
+                            </div>
+                            <div class="col-3 text-center">
+                                <form>
+                                    <input type="hidden" value="{{item.id}}" name="id">
+                                    <button type="submit" name="delete" class="btn btn-danger" value="true"><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </div><div class="col-3"></div></div>
+                        </td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

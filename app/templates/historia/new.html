@@ -1,0 +1,1073 @@
+{% extends "core/core.html" %}
+{%block title%}Ridento{%endblock%}
+{%block titlepage%}Nuevo Paciente{%endblock%}
+{%block body%}
+<form method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-header">
+            Datos Personales
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4 col-md-3">
+                    {{form.nombre.label}}
+                    {{form.nombre}}
+                </div>
+                <div class="col-4 col-md-3">
+                    {{form.sexo.label}}
+                    {{form.sexo}}
+                </div>
+                <div class="col-4 col-md-3">
+                    {{form.edad.label}}
+                    {{form.edad}}
+                </div>
+                <div class="col-4 col-md-3">
+                    {{form.estado_civil.label}}
+                    {{form.estado_civil}}
+                </div>
+                <div class="col-4 col-md-3">
+                    {{form.ocupacion.label}}
+                    {{form.ocupacion}}
+                </div>
+                <div class="col-4 col-md-3">
+                    {{form.domicilio.label}}
+                    {{form.domicilio}}
+                </div>
+                <div class="col-4 col-md-3">
+                    {{form.telefono.label}}
+                    {{form.telefono}}
+                </div>
+                <div class="col-4 col-md-3">
+                    {{form.responsable.label}}
+                    {{form.responsable}}
+                </div>
+                <div class="col-4 col-md-3">
+                    Telefono de contacto
+                    {{form.telefono_responsable}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Antecedentes Familiares
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.diabetes.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.diabetes}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.anemia.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.anemia}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.cardiovascular.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.cardiovascular}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.asma.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.asma}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.tuberculosis.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.tuberculosis}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.cancer.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.cancer}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.reumatismos.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.reumatismos}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.sida.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.sida}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.epilepsia.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.epilepsia}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.hipertension.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.hipertension}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="row">
+                        <div class="col-8">
+                            {{form.hemofilia.label}}
+                        </div>
+                        <div class="col-4">
+                            {{form.hemofilia}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-2">
+                            {{form.observaciones.label}}
+                        </div>
+                        <div class="col-10">
+                            {{form.observaciones}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Antecedentes Personales
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Epilepsia
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_epilepsia}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Cardiopatia
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_cardiopatias}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            ¿Cual?
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.personal_cardiopatia_cual}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Tosferina
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_tosferina}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Paludismo
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_paludismo}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Hepatitis
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_hepatitis}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Hemorragias
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_hemorragias}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            VIH/SIDA
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_vih}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Alergias
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.persona_alergias}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            ¿Cuales?
+                        </div>
+                        <div class="col-12 col-md-8">
+                            {{form.personal_alergias_cual}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Hipertensión
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_hipertencion}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Amigdalitis
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_amigdalitis}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Hipotensión
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_hipotension}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Parásitos
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_parasitos}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            E.T.S.
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_ets}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Diabetes
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_diabetes}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Sarampión
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_sarampion}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-12 col-md-12">
+                            ¿Qué enfermedades ha padecido o padeció durante la infancia?
+                        </div>
+                        <div class="col-12 col-md-12">
+                            {{form.personal_padecio_infancia}}
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="col-12 col-md-5">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            ¿Le han puesto Sangre?
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_sangre}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-4 col-md-4">
+                            ¿Por qué?
+                        </div>
+                        <div class="col-8 col-md-8">
+                            {{form.personal_sangre_porque}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            ¿Se ha fracturado?
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_fracturas}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            ¿Dondé?
+                        </div>
+                        <div class="col-12 col-md-8">
+                            {{form.personal_fractura_donde}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            ¿Le han operado?
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_operacion}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            ¿De qué?
+                        </div>
+                        <div class="col-12 col-md-8">
+                            {{form.personal_operacion_de}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            Evolución de la operación
+                        </div>
+                        <div class="col-12 col-md-8">
+                            {{form.personal_operacion_evolucion}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5">
+                    <div class="row">
+                        <div class="col-6 col-md-10">
+                            ¿Es alérgico a algún medicamento?
+                        </div>
+                        <div class="col-6 col-md-2">
+                            {{form.personal_alergia_medicamento}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Mencionelos
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.personal_alergia_medicamento_cual}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-8 col-md-8">
+                            Ha tenido algún padecimiento infeccioso de importancia
+                        </div>
+                        <div class="col-4 col-md-4">
+                            {{form.personal_infeccion}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5">
+                    <div class="row">
+                        <div class="col-6 col-md-6">
+                            Esta bajo tratamiento medico
+                        </div>
+                        <div class="col-6 col-md-6">
+                            {{form.personal_tratamiento_medico}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            ¿Cuál? 
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.personal_tratamiento_medico_cual}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Paciente cooperador
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_paciente_coopera}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-7">
+                            Bien Orientado
+                        </div>
+                        <div class="col-6 col-md-5">
+                            {{form.personal_orientado}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Complexión
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.personal_complexion}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Facies Característico
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.personal_facies}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-12">
+                            Comentarios
+                        </div>
+                        <div class="col-6 col-md-12">
+                            {{form.personal_comentarios}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            No Patologicos
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    Su Casa cuenta con:
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-6">
+                            Agua Potable
+                        </div>
+                        <div class="col-6 col-md-6">
+                            {{form.casa_agua_potable}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-6">
+                            Luz
+                        </div>
+                        <div class="col-6 col-md-6">
+                            {{form.casa_luz}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-6">
+                            Drenaje
+                        </div>
+                        <div class="col-6 col-md-6">
+                            {{form.casa_drenaje}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    Su habitación cuenta con:
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-6">
+                            Ventilación Adecuada
+                        </div>
+                        <div class="col-6 col-md-6">
+                            {{form.casa_habitacion_ventilacion}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Bien iluminada
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.casa_habitacion_iluminada}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Construcción
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.casa_construccion}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Promiscuidad
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.casa_promiscuidad}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Hacinamiento
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.casa_hacinamiento}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    Alimentación
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Cantidad y calidad
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.alimentacion}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    Higiene Personal
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-5">
+                            Frecuencia de baño
+                        </div>
+                        <div class="col-6 col-md-7">
+                            {{form.frecuencia_baño}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Cambio de ropa
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.cambio_ropa}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    Higiene Oral
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-6">
+                            Cepillado número de veces
+                        </div>
+                        <div class="col-6 col-md-6">
+                            {{form.cepillado_dental}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Metodo
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.metodo_cepillado}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-8">
+                            Utiliza enjuages bucales
+                        </div>
+                        <div class="col-6 col-md-4">
+                            {{form.enjuages_bucales}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Mencionelos
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.enjuage_marca}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Con que Frecuencia
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.enjuage_frecuencia}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Utiliza Hilo Dental
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.hilo_dental}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Con que frecuencia
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.hilo_dental_frecuencia}}
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Tabaquismo
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.tabaquismo}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Toxicomania
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.toxicomania}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            ¿De que tipo?
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.toxicomania_tipo}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Alcohol
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.alcohol}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Con que frecuencia
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.frecuencia_alchol}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Tiene algun tatuaje
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.tatuaje}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            {{form.vacunas.label}}
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.vacunas}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Practica algun deporte
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.deporte}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            {{form.motivo_consulta.label}}
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.motivo_consulta}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    Terapéutica empleada en el padecimiento actual: 
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Rostro
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.teraputica_rostro}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Encia
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.teraputica_encia}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Labios
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.teraputica_labios}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Paladar y carrillos
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.teraputica_paladar_carrillos}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    Lengua
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Macrodoncia
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_macrodoncia}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Microdoncia
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_microdoncia}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Escrota
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_escrota}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Bifida
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_bifida}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Suburral
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_saburral}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Color
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_color}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Músculos
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_musculos}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            ATM izq.
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_atm_izq}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            ATM Derecha
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_atm_derecha}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Observaciones
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.lengua_observaciones}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            {{form.odontograma.label}}
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.odontograma}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            {{form.estudios_auxiliares.label}}
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.estudios_auxiliares}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            {{form.diagnostico.label}}
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.diagnostico}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            {{form.pronostico.label}}
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.pronostico}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            {{form.plan_tratamiento.label}}
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.plan_tratamiento}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            El Paciente Se Suscribe
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.paciente_suscribe}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            Nombre y Firma
+                        </div>
+                        <div class="col-6 col-md-8">
+                            {{form.firma_paciente}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%if id != None%}
+        <input type="hidden" name="id" value="{{id}}">
+    {%endif%}
+        <div class="row">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">
+                    Guardar Paciente
+                </button>
+            </div>
+        </div>
+    
+</form>
+<style>
+    .col-6, .col-md-6, .col-md-12,.col-md-4, .col-md-7{
+        margin-bottom: 8px;
+    }
+</style>
+{%endblock%}

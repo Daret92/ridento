@@ -1,0 +1,245 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Ridento{%endblock%}</title>
+    
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static '/css/adminlte.min.css'%}">
+    <link rel="stylesheet" href="{% static '/css/all.min.css'%}">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+          <!-- Left navbar links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="/" class="nav-link" target="_blank">Ver Sitio</a>
+            </li>
+          </ul>
+      
+          <!-- Right navbar links -->
+          <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
+                  class="fas fa-th-large"></i></a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.navbar -->
+      
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+          <!-- Brand Logo -->
+          <a href="index" class="brand-link">
+            <img src="dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">Ridento</span>
+          </a>
+      
+          <!-- Sidebar -->
+          <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+              <div class="info">
+                <a href="#" class="d-block">{{user}}</a>
+              </div>
+            </div>
+      
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-table"></i>
+                      <p>
+                        Catalogos
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="indexT" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Tratamiento</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="indexP" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Procedimiento</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-table"></i>
+                    <p>
+                      Pacientes
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="historia" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Historiales Clinicos</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Seguimiento Paciente</p>
+                        </a>
+                      </li>
+                    <li class="nav-item">
+                      <a href="" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Buscar Paciente</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Ficha Paciente</p>
+                        </a>
+                      </li>
+                  </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-table"></i>
+                      <p>
+                        Ingresos / Egresos
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Movimientos Diarios</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Resumen de Gastos</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="agenda" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Solicitando Cita</p>
+                    </a>
+                  </li>
+                <li class="nav-header">Configuracion Web</li>
+                <li class="nav-item">
+                  <a href="galeria" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Galeria Principal</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="somos" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Quienes Somos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="promos" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Promociones</p>
+                  </a>
+                </li>
+                <!--<li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p>
+                      Informacion
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Quienes Somos
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="#" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Level 3</p>
+                          </a>
+                        </li>
+                      </ul>-->
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+          </div>
+          <!-- /.sidebar -->
+        </aside>
+      
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+          <div class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h1 class="m-0 text-dark">{%block titlepage%}Index{%endblock%}</h1>
+                </div><!-- /.col -->
+              </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </div>
+          <!-- /.content-header -->
+      
+          <!-- Main content -->
+          <div class="content">
+            <div class="container-fluid">
+              <!-- /.row -->
+              {% block body%}
+                {% endblock%}
+            </div>
+            <!-- /.container-fluid -->
+          </div>
+          <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+      
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <br/>
+          <button class="btn btn-danger w-100" ><ahref="logout">Cerrar Sesion</a></button>
+        </aside>
+        <!-- /.control-sidebar -->
+      
+        <!-- Main Footer -->
+        <footer class="main-footer">
+          <strong>Copyright &copy; 2014-2019 <a href="">HordarSoft</a>.</strong>
+          All rights reserved.
+          <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0
+          </div>
+        </footer>
+      </div>
+    <script src="{%static '/js/jquery.min.js'%}"></script>
+    <script src="{%static '/js/adminlte.min.js'%}"></script>
+    </body>
+</html>

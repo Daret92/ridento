@@ -1,0 +1,51 @@
+{% extends "core/core.html" %}
+{%block title%}Galeria{%endblock%}
+{%block titlepage%}Galeria{%endblock%}
+{%block body%}
+<div class="row">
+    <div class="col-9">
+        <table class="table">
+            <thead>
+                <th>Imagen</th>
+                <th>Texto</th>
+                <th>Primera</th>
+                <th></th>
+            </thead>
+            <tbody>
+                {%for item in promos%}
+                    <tr>
+                        <td class="w-25"><img src="{{item.imagen.url}}" width="35%"></td>
+                        <td class="w-25">{{item.texto}}</td>
+                        <td class="">{% if item.activa %}<i class="fas fa-check-square"></i>{%else%}<i class="fas fa-square-full"></i>{%endif%}</td>
+                        <td class="w-25"><div class="row"><div class="col-3"></div><div class="col-3 text-center">
+                            <form>
+                                <input type="hidden" value="{{item.id}}" name="id">
+                                <button type="submit" name="edit" class="btn btn-info" value="true"><i class="fas fa-edit"></i></button>
+                            </form>
+                        </div>
+                        <div class="col-3 text-center">
+                            <form>
+                                <input type="hidden" value="{{item.id}}" name="id">
+                                <button type="submit" name="delete" class="btn btn-danger" value="true"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </div><div class="col-3"></div></div></td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-3">
+        <form method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{form}}
+            {%if id%}
+                <input type="hidden" value="{{id}}" name="id">
+            {%endif%}
+            <br/>
+            <button type="submit" class="btn btn-primary">
+                Guardar Imagen
+            </button>
+        </form>
+    </div>
+</div>
+{%endblock%}
