@@ -1,5 +1,4 @@
 django
-psycopg2
 pillow
 django-bootstrap4
 django-ckeditor
