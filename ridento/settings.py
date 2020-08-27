@@ -25,7 +25,7 @@ SECRET_KEY = 'i06l^z!g)ug#ev(b%2^_@@$(j2pu*7b25x=t(es-px0thwaf+w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ridento.com','localhost']
+ALLOWED_HOSTS = ['ridento.com','localhost','www.ridento.com','35.192.206.7']
 
 
 # Application definition
