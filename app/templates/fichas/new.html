@@ -1,0 +1,72 @@
+{% extends "core/core.html" %}
+{%load static%}
+{%block title%}Ridento{%endblock%}
+{%block titlepage%}Seguimiento Clinico{%endblock%}
+{%block body%}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-7">
+                    {{form.paciente.label}}
+                    {{form.paciente}}
+                </div>
+                <div class="col-5">
+                    {{form.especialidad.label}}
+                    {{form.especialidad}}
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-3">
+                            Edad:
+                        </div>
+                        <div class="col-7">
+                            <input id="edad" type="text" disabled class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-3">
+                            Telefono:
+                        </div>
+                        <div class="col-7">
+                            <input id="telefono" type="text" disabled class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    {{form.tratamiento.label}}
+                    {{form.tratamiento}}
+                </div>
+                <div class="col-6 col-md-3">
+                    {{form.costo.label}}
+                    {{form.costo}}
+                </div>
+                <div class="col-6 col-md-3">
+                    {{form.total.label}}
+                    {{form.total}}
+                </div>
+                <div class="col-6 col-md-3">
+                    {{form.procedimiento.label}}
+                    {{form.procedimiento}}
+                </div>
+            </div>
+            {%if id%}
+                <input type="hidden" value="{{id}}" name="id">
+            {%endif%}
+            <br/>
+            <button type="submit" class="btn btn-primary">
+                Guardar Procedimiento
+            </button>
+        </form>
+    </div>
+</div>
+<script src="{%static '/js/newT.js'%}"></script>
+{%endblock%}

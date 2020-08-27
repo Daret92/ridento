@@ -5,17 +5,20 @@ class Tratamientos(models.Model):
     nombre = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=500)
     activo = models.BooleanField(default=True)
-
+    def __str__(self):
+        return '%s' % (self.nombre)
 class Procedimiento(models.Model):
     nombre = models.CharField(max_length=20)
     descripcion = models.CharField(max_length=500)
     activo = models.BooleanField(default=True)
-
+    def __str__(self):
+        return '%s' % (self.nombre)
 class Citas(models.Model):
     nombre = models.CharField(max_length=50)
     telefono = models.CharField(max_length=10,unique=True)
     agendado = models.BooleanField(default=False)
-
+    def __str__(self):
+        return '%s' % (self.nombre)
     
 
 SEXO = [
@@ -41,6 +44,7 @@ BAÑO = [
     ('3','Diario'),
 ]
 class Paciente(models.Model):
+    credito = models.DecimalField(max_digits=10,decimal_places=2,blank=True,default=0.0)
     token = models.CharField(max_length=6,blank=True)
     alta = models.DateField(auto_now_add=True)
     nombre = models.CharField(max_length=50)
@@ -147,6 +151,20 @@ class Paciente(models.Model):
     plan_tratamiento = models.CharField(max_length=1500,blank=True)
     paciente_suscribe = models.CharField(max_length=1500,blank=True)
     firma_paciente = models.ImageField(upload_to="paciente",blank=True)
+    def __str__(self):
+        return '%s' % (self.nombre)
 
 
+class FichaPaciente(models.Model):
+    paciente = models.ForeignKey(Paciente,on_delete=models.CASCADE,null=False,blank=False)
+    tratamiento = models.ForeignKey(Tratamientos,on_delete=models.CASCADE,null=False,blank=False)
+    especialidad = models.ForeignKey(Procedimiento,on_delete=models.CASCADE,null=False,blank=False)
+    procedimiento = models.CharField(max_length=500)
+    fecha = models.DateField(auto_now_add=True)
+    costo = models.DecimalField(max_digits=10,decimal_places=2)
+    total = models.DecimalField(max_digits=10,decimal_places=2)
 
+class IngresoEgresoFicha(models.Model):
+    fecha = models.DateField(auto_now_add=True)
+    abono = models.DecimalField(max_digits=10,decimal_places=2)
+    ficha = models.ForeignKey(FichaPaciente,on_delete=models.CASCADE,null=True,blank=True)

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static '/css/adminlte.min.css'%}">
     <link rel="stylesheet" href="{% static '/css/all.min.css'%}">
+    <script src="{%static '/js/jquery.min.js'%}"></script>
+    <script src="{%static '/js/adminlte.min.js'%}"></script>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -65,13 +67,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="indexT" class="nav-link">
+                        <a href="/indexT" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Tratamiento</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="indexP" class="nav-link">
+                        <a href="/indexP" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Especialidad</p>
                         </a>
@@ -88,23 +90,17 @@
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="historia" class="nav-link">
+                      <a href="/historia" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Historiales Clinicos</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="/fichas_index" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
-                          <p>Seguimiento Paciente</p>
+                          <p>Seguimiento Pacientes</p>
                         </a>
                       </li>
-                    <li class="nav-item">
-                      <a href="" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Buscar Paciente</p>
-                      </a>
-                    </li>
                     <li class="nav-item">
                         <a href="" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
@@ -137,26 +133,26 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a href="agenda" class="nav-link">
+                    <a href="/agenda" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Solicitando Cita</p>
                     </a>
                   </li>
                 <li class="nav-header">Configuracion Web</li>
                 <li class="nav-item">
-                  <a href="galeria" class="nav-link">
+                  <a href="/galeria" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Galeria Principal</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="somos" class="nav-link">
+                  <a href="/somos" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Quienes Somos</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="promos" class="nav-link">
+                  <a href="/promos" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Promociones</p>
                   </a>
@@ -239,7 +235,5 @@
           </div>
         </footer>
       </div>
-    <script src="{%static '/js/jquery.min.js'%}"></script>
-    <script src="{%static '/js/adminlte.min.js'%}"></script>
     </body>
 </html>

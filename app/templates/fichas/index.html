@@ -1,0 +1,43 @@
+{% extends "core/core.html" %}
+{%block title%}Ridento{%endblock%}
+{%block titlepage%}Seguimiento Clinico{%endblock%}
+{%block body%}
+<div class="row">
+    <div class="col-10"></div>
+    <div class="col-2">
+        <a href="new_ficha" class="btn btn-info">Nuevo Ficha</a>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-6">
+        <input type="Text" class=" form-control" placeholder="Busqueda por Paciente">
+    </div>
+    <div class="col-6"></div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Paciente</th>        
+                    <th>Telefono</th>
+                    <th>Edad</th>
+                    <th>Seguimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for item in fichas%}
+                    <tr>
+                        <td class="w-50">{{item.paciente.nombre}}</td>
+                        <td class="w-25">{{item.paciente.telefono}}</td>
+                        <td>{{item.paciente.edad}}</td>
+                        <td class="text-center" ><a href="seguimiento/{{item.id}}/{{item.paciente.id}}" class="btn btn-success"><i class="fas fa-clipboard-list fa-2x"></i></a></td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

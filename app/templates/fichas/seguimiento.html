@@ -1,0 +1,91 @@
+{% extends "core/core.html" %}
+{%block title%}Ridento{%endblock%}
+{%block titlepage%}Seguimiento Clinico{%endblock%}
+{% load tags %}
+{%block body%}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                {{paciente.nombre}}
+            </div>
+            <div class="col-3">
+                Edad: {{paciente.edad}}
+            </div>
+            <div class="col-3">
+                Telefono: {{paciente.telefono}}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-9">
+
+            </div>
+            <div class="col-3">
+                Credito: $ {{paciente.credito}}
+            </div>
+        </div>
+        <br/>
+        <table class="table">
+            <thead>
+                <th>Fecha</th>
+                <th>Especialidad</th>
+                <th>Tratamiento</th>
+                <th>Costo</th>
+                <th class="text-center">Abono</th>
+                <th class="text-center">Total</th>
+                <th>Procedimiento</th>
+            </thead>
+            <tbody>
+                {%for item in fichas%}
+                <tr>
+                    <td>{{item.fecha}}</td>
+                    <td>{{item.especialidad}}</td>
+                    <td>{{item.tratamiento}}</td>
+                    <td>{{item.costo}}</td>
+                    <td class="w-25 text-center">
+                        {%if item.costo <= item.total %}
+                            Abono Completo
+                        {%else%}
+                            <div class="row">
+                                {%if paciente.credito > 0 %}
+                                
+                                <div class="col-4">
+                                    <div><button type="submit" class="btn btn-warning" name="idFicha" value="{{item.id}}"><i class="fas fa-credit-card"></i></button></div>
+                                    <div><sub>Tomar del credito</sub></div>
+                                </div>
+                                    <div class="col-8">
+                                {%else%}
+                                    <div class="col-12">
+                                {%endif%}
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-10">
+                                                {{form.abono}}
+                                            </div>
+                                            <div class="col-2">
+                                                <button type="submit" class="btn btn-success" name="idFicha" value="{{item.id}}"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        {%endif%}
+                    </td>
+                    <td class="text-center">
+                        <div class="row">
+                            <div class="col-12">
+                                {%if item.costo <= item.total %}<span class="bg bg-info">Pagado</span>{%endif%}
+                            </div>
+                            <div class="col-12">{{item.total}}</div>
+                        </div>
+                    </td>
+                    <td class="w-25">{{item.procedimiento}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

@@ -1,5 +1,5 @@
 from django import forms
-from app.models import Tratamientos,Procedimiento,Citas,Paciente
+from app.models import Tratamientos,Procedimiento,Citas,Paciente,FichaPaciente,IngresoEgresoFicha
 from web.models import Galery,Promos,Somos
 class TratamientosForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -80,7 +80,7 @@ class PacienteForm(forms.ModelForm):
         
     class Meta:
         model = Paciente
-        exclude ='__all__'
+        fields = '__all__'
         widgets = {
                 'observaciones': forms.Textarea(attrs={'cols': 25, 'rows': 5}),
                 'personal_padecio_infancia': forms.Textarea(attrs={'cols': 25, 'rows': 3}),
@@ -95,3 +95,25 @@ class PacienteForm(forms.ModelForm):
                 'pronostico': forms.Textarea(attrs={'cols': 25, 'rows': 3}),
                 'plan_tratamiento': forms.Textarea(attrs={'cols': 25, 'rows': 3}),
            }
+
+class FichaPacienteForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(FichaPacienteForm, self).__init__(*args, **kwargs)
+        for item in self.fields:
+            self.fields[item].widget.attrs['class'] = 'form-control'
+    class Meta:
+        model = FichaPaciente
+        fields = '__all__'
+        widgets = { 
+            'procedimiento': forms.Textarea(attrs={'cols': 25, 'rows': 5}),
+        }
+
+
+class IngresoEgresoFichaForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(IngresoEgresoFichaForm, self).__init__(*args, **kwargs)
+        for item in self.fields:
+            self.fields[item].widget.attrs['class'] = 'form-control'
+    class Meta:
+        model = IngresoEgresoFicha
+        fields = '__all__'

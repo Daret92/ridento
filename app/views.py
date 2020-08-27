@@ -3,10 +3,11 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth import logout as do_logout
-from app.models import Tratamientos,Procedimiento,Citas,Paciente
-from app.forms import TratamientosForm,ProcedimientoForm,GaleryForm,PromosForm,SomosForm,PacienteForm
+from app.models import Tratamientos,Procedimiento,Citas,Paciente,FichaPaciente,IngresoEgresoFicha
+from app.forms import TratamientosForm,ProcedimientoForm,GaleryForm,PromosForm,SomosForm,PacienteForm,FichaPacienteForm,IngresoEgresoFichaForm
 from web.models import Galery,Promos,Somos
 from django.utils.crypto import get_random_string
+from django.http.response import JsonResponse
 # Create your views here.
 def index(request):
     
@@ -293,3 +294,79 @@ def NewHistoria(request,id = None):
     else:
         form = AuthenticationForm()
         return render(request, 'login.html', {'form': form})
+
+def Fichas(request):
+    if request.user.is_authenticated:
+        fichas = FichaPaciente.objects.order_by("paciente").distinct("paciente")
+        context = {
+            "fichas":fichas
+        }
+        return render(request, 'fichas/index.html',context)
+    else:
+        form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})
+
+def getPaciente(request):
+    paciente = Paciente.objects.get(pk=request.GET.get("id"))
+    return JsonResponse({"success":True,"telefono":paciente.telefono,"edad":paciente.edad})
+
+def NewFicha(request):
+    if request.user.is_authenticated:
+        if request.POST.get("id") != None:
+            ids = request.POST.get("id")
+        else:
+            ids = None
+
+        form = FichaPacienteForm()
+        if request.method == "POST":
+            if ids != None:
+                ficha = FichaPacienteForm.objects.get(ok=ids)
+                form=FichaPacienteForm(request.POST,instance=ficha)
+            else:
+                form=FichaPacienteForm(request.POST)
+            if form.is_valid:
+                form.save()
+                return redirect(Fichas)
+        context = {
+            "form":form,
+            "id":ids
+        }
+        return render(request, 'fichas/new.html',context)
+    else:
+        form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})
+
+def Seguimiento(request,id,paciente):
+    if request.user.is_authenticated:
+        paciente = Paciente.objects.get(pk=paciente)
+        fichas = FichaPaciente.objects.filter(paciente=paciente)
+        print(fichas)
+        if request.method == "POST":
+            ficha = FichaPaciente.objects.get(pk=request.POST.get("idFicha"))
+            paciente = Paciente.objects.get(pk=ficha.paciente.id)
+            form = IngresoEgresoFichaForm(request.POST)
+            if form.is_valid:
+                formulario = form.save(commit=False)
+                if formulario.abono > ficha.costo:
+                    paciente.credito = paciente.credito +formulario.abono - ficha.costo
+                    paciente.save()
+                    ficha.total = ficha.total +formulario.abono
+                else:
+                    ficha.total = ficha.total +formulario.abono
+                    if ficha.total > ficha.costo:
+                        paciente.credito = paciente.credito + ficha.total - ficha.costo
+                        paciente.save()
+                ficha.save()
+                formulario.save()
+
+        form = IngresoEgresoFichaForm()
+        context={
+            "paciente":paciente,
+            "fichas":fichas,
+            "form":form
+        }
+        return render(request,"fichas/seguimiento.html",context)
+    else:
+        form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})
+        

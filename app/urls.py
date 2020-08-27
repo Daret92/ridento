@@ -14,5 +14,9 @@ urlpatterns = [
     path('historia', views.Historia),
     path('new_historial', views.NewHistoria),
     path('new_historial/<int:id>', views.NewHistoria),
+    path('fichas_index', views.Fichas),
+    path('new_ficha', views.NewFicha),
+    path('getPaciente', views.getPaciente),
+    path('seguimiento/<int:id>/<int:paciente>', views.Seguimiento),
 ]
     
