@@ -4,6 +4,8 @@
 {%block body%}
 <form method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
+    {{form.token}}
+
     <div class="card">
         <div class="card-header">
             Datos Personales

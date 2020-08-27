@@ -41,6 +41,7 @@ BAÑO = [
     ('3','Diario'),
 ]
 class Paciente(models.Model):
+    token = models.CharField(max_length=6,blank=True)
     alta = models.DateField(auto_now_add=True)
     nombre = models.CharField(max_length=50)
     sexo = models.CharField(choices=SEXO, max_length=10)
@@ -134,18 +135,18 @@ class Paciente(models.Model):
     lengua_escrota = models.BooleanField(default=False)
     lengua_bifida = models.BooleanField(default=False)
     lengua_saburral = models.BooleanField(default=False)
-    lengua_color = models.CharField(max_length=20)
-    lengua_musculos = models.CharField(max_length=20)
-    lengua_atm_izq = models.CharField(max_length=20)
-    lengua_atm_derecha = models.CharField(max_length=20)
-    lengua_observaciones = models.CharField(max_length=500)
-    odontograma = models.ImageField(upload_to="odontograma")
-    estudios_auxiliares = models.CharField(max_length=200)
-    diagnostico = models.CharField(max_length=1500)
-    pronostico = models.CharField(max_length=1500)
-    plan_tratamiento = models.CharField(max_length=1500)
-    paciente_suscribe = models.CharField(max_length=1500)
-    firma_paciente = models.ImageField(upload_to="paciente")
+    lengua_color = models.CharField(max_length=20,blank=True)
+    lengua_musculos = models.CharField(max_length=20,blank=True)
+    lengua_atm_izq = models.CharField(max_length=20,blank=True)
+    lengua_atm_derecha = models.CharField(max_length=20,blank=True)
+    lengua_observaciones = models.CharField(max_length=500,blank=True)
+    odontograma = models.ImageField(upload_to="odontograma",blank=True)
+    estudios_auxiliares = models.CharField(max_length=200,blank=True)
+    diagnostico = models.CharField(max_length=1500,blank=True)
+    pronostico = models.CharField(max_length=1500,blank=True)
+    plan_tratamiento = models.CharField(max_length=1500,blank=True)
+    paciente_suscribe = models.CharField(max_length=1500,blank=True)
+    firma_paciente = models.ImageField(upload_to="paciente",blank=True)
 
 
 

@@ -6,6 +6,7 @@ from django.contrib.auth import logout as do_logout
 from app.models import Tratamientos,Procedimiento,Citas,Paciente
 from app.forms import TratamientosForm,ProcedimientoForm,GaleryForm,PromosForm,SomosForm,PacienteForm
 from web.models import Galery,Promos,Somos
+from django.utils.crypto import get_random_string
 # Create your views here.
 def index(request):
     
@@ -264,14 +265,20 @@ def NewHistoria(request,id = None):
             form = PacienteForm(instance=historial)
         
         if request.method=="POST":
-            print(request.POST.get("id"))
             if request.POST.get("id"):
                 historial = Paciente.objects.get(pk=request.POST.get("id"))
             else:
                 historial = None
             form = PacienteForm(request.POST,request.FILES,instance=historial)
+            
             if form.is_valid():
-                form.save()
+                obj = form.save(commit=False)
+                if historial == None:
+                    obj.token = get_random_string(length=6)
+                else:
+                    print(historial.token)
+                    obj.token = historial.token
+                obj.save()
                 return redirect(Historia)
             else:
                 print(form.errors)

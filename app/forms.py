@@ -76,6 +76,7 @@ class PacienteForm(forms.ModelForm):
         for item in self.fields:
             if item != "firma_paciente" and item != "odontograma":
                 self.fields[item].widget.attrs['class'] = 'form-control'
+        self.fields["token"].widget.attrs['hidden'] = 'true'
         
     class Meta:
         model = Paciente
