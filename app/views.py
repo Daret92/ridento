@@ -340,22 +340,29 @@ def Seguimiento(request,id,paciente):
     if request.user.is_authenticated:
         paciente = Paciente.objects.get(pk=paciente)
         fichas = FichaPaciente.objects.filter(paciente=paciente)
-        print(fichas)
         if request.method == "POST":
             ficha = FichaPaciente.objects.get(pk=request.POST.get("idFicha"))
             paciente = Paciente.objects.get(pk=ficha.paciente.id)
             form = IngresoEgresoFichaForm(request.POST)
             if form.is_valid:
                 formulario = form.save(commit=False)
-                if formulario.abono > ficha.costo:
-                    paciente.credito = paciente.credito +formulario.abono - ficha.costo
-                    paciente.save()
-                    ficha.total = ficha.total +formulario.abono
-                else:
-                    ficha.total = ficha.total +formulario.abono
-                    if ficha.total > ficha.costo:
-                        paciente.credito = paciente.credito + ficha.total - ficha.costo
+                if request.POST.get("credito") :
+                    if formulario.abono <= paciente.credito:
+                        paciente.credito = paciente.credito - formulario.abono
+                        ficha.total = ficha.total +formulario.abono
+                        if ficha.total > ficha.costo:
+                            paciente.credito = paciente.credito + ficha.total - ficha.costo
                         paciente.save()
+                else:
+                    if formulario.abono > ficha.costo:
+                        paciente.credito = paciente.credito +formulario.abono - ficha.costo
+                        paciente.save()
+                        ficha.total = ficha.total +formulario.abono
+                    else:
+                        ficha.total = ficha.total +formulario.abono
+                        if ficha.total > ficha.costo:
+                            paciente.credito = paciente.credito + ficha.total - ficha.costo
+                            paciente.save()
                 ficha.save()
                 formulario.save()
 

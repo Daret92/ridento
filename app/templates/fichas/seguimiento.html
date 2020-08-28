@@ -47,30 +47,26 @@
                         {%if item.costo <= item.total %}
                             Abono Completo
                         {%else%}
+                            <form method="POST">
                             <div class="row">
-                                {%if paciente.credito > 0 %}
-                                
-                                <div class="col-4">
-                                    <div><button type="submit" class="btn btn-warning" name="idFicha" value="{{item.id}}"><i class="fas fa-credit-card"></i></button></div>
-                                    <div><sub>Tomar del credito</sub></div>
-                                </div>
-                                    <div class="col-8">
-                                {%else%}
-                                    <div class="col-12">
-                                {%endif%}
-                                    <form method="POST">
                                         {% csrf_token %}
                                         <div class="row">
-                                            <div class="col-10">
+                                            <div class="col-9">
                                                 {{form.abono}}
                                             </div>
-                                            <div class="col-2">
-                                                <button type="submit" class="btn btn-success" name="idFicha" value="{{item.id}}"><i class="fas fa-plus"></i></button>
+                                            <div class="col-3">
+                                                {%if paciente.credito > 0 %}
+                                                    <input type="hidden" name="credito" value="false">
+                                                        <div><button type="submit" class="btn btn-warning" name="idFicha" value="{{item.id}}"><i class="fas fa-credit-card"></i></button></div>
+                                                    <div><sub>Tomar del credito</sub></div>
+                                                {%else%}
+                                                    <button type="submit" class="btn btn-success" name="idFicha" value="{{item.id}}"><i class="fas fa-plus"></i></button>
+                                                {%endif%}
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         {%endif%}
                     </td>
                     <td class="text-center">
