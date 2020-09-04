@@ -6,6 +6,7 @@ __pycache__/
 galery/
 # C extensions
 *.so
+virtual
 
 # Distribution / packaging
 .Python

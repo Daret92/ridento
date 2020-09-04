@@ -35,7 +35,7 @@ def logout(request):
     # Finalizamos la sesión
     do_logout(request)
     # Redireccionamos a la portada
-    return redirect('index')
+    return redirect(index)
 
 def indexTratamiento(request):
     if request.user.is_authenticated:

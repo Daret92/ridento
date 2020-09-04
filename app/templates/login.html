@@ -1,17 +1,45 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ridento</title>
+    <title>{%block title%}Ridento{%endblock%}</title>
+    
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static '/css/adminlte.min.css'%}">
+    <link rel="stylesheet" href="{% static '/css/all.min.css'%}">
+    <script src="{%static '/js/jquery.min.js'%}"></script>
+    <script src="{%static '/js/adminlte.min.js'%}"></script>
+    <script src="{%static '/js/login.js'%}"></script>
 </head>
 <body>
-    <h2>Iniciar sesión</h2>
-
-<form method="POST">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button type="submit">Login</button>
-</form>
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 w-100">
+            <div class="form align-self-center col-4">
+        
+            <h2>Iniciar sesión</h2>
+            <form method="POST" class="form">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Iniciar Sesion</button>
+            </form>
+            </div>
+            </div>
+    </div>
+    <style>
+        body{
+            height: 100vh!important;
+        }
+        .login{
+            background-color: beige;
+        }
+        .form{
+            padding: 2%;
+            text-align: center;
+            background-color: beige;
+            border-radius: 5%;
+        }
+    </style>
 </body>
 </html>
