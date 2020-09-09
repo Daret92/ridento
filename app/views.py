@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth import logout as do_logout
-from app.models import Tratamientos,Procedimiento,Citas,Paciente,FichaPaciente,IngresoEgresoFicha
-from app.forms import TratamientosForm,ProcedimientoForm,GaleryForm,PromosForm,SomosForm,PacienteForm,FichaPacienteForm,IngresoEgresoFichaForm
+from app.models import Tratamientos,Procedimiento,Citas,Paciente,FichaPaciente,IngresoEgresoFicha,GastosDiarios
+from app.forms import TratamientosForm,ProcedimientoForm,GaleryForm,PromosForm,SomosForm,PacienteForm,FichaPacienteForm,IngresoEgresoFichaForm,GastosDiariosForm
 from web.models import Galery,Promos,Somos
 from django.utils.crypto import get_random_string
 from django.http.response import JsonResponse
@@ -377,3 +377,32 @@ def Seguimiento(request,id,paciente):
         form = AuthenticationForm()
         return render(request, 'login.html', {'form': form})
         
+def ieIndex(request):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = GastosDiariosForm(request.POST)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.user = request.user
+                obj.save()
+        form = GastosDiariosForm()
+        context={
+            'form':form
+        }
+        return render(request,"ingreso_egreso/index.html",context)
+    else:
+        form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})
+
+def ieReporte(request):
+    if request.user.is_authenticated:
+        gastos = GastosDiarios.objects.all()
+        fichas = FichaPaciente.objects.all()
+        context ={
+            "gastos":gastos,
+            "fichas":fichas,            
+        }
+        return render(request,"ingreso_egreso/reporte.html",context)
+    else:
+        form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})

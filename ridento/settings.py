@@ -24,6 +24,7 @@ SECRET_KEY = 'i06l^z!g)ug#ev(b%2^_@@$(j2pu*7b25x=t(es-px0thwaf+w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+online = True
 
 ALLOWED_HOSTS = ['ridento.com','localhost','www.ridento.com','35.192.206.7']
 
@@ -132,10 +133,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-#STATICFILES_DIRS=[
-#    os.path.join(BASE_DIR, 'static/')
-#]
+if online:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+else:
+    STATICFILES_DIRS=[
+        os.path.join(BASE_DIR, 'static/')
+    ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'galery')
 MEDIA_URL = '/'

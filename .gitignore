@@ -7,7 +7,7 @@ galery/
 # C extensions
 *.so
 virtual
-
+documentos
 # Distribution / packaging
 .Python
 build/

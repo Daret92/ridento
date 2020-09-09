@@ -52,7 +52,23 @@
                                         {% csrf_token %}
                                         <div class="row">
                                             <div class="col-9">
-                                                {{form.abono}}
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        {{form.abono}}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div>{{form.transferencia}}</div><sub>Trans. Elect.</sub></div>
+                                                    <div class="col-4">
+                                                        <div>
+                                                            {{form.tarjeta}}
+                                                        </div><sub>Tarjeta</sub>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div>
+                                                            {{form.efectivo}}
+                                                        </div>
+                                                        <sub>Efectivo</sub></div>
+                                                </div>
                                             </div>
                                             <div class="col-3">
                                                 {%if paciente.credito > 0 %}

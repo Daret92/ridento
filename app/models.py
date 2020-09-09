@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Tratamientos(models.Model):
     nombre = models.CharField(max_length=20)
@@ -168,3 +168,25 @@ class IngresoEgresoFicha(models.Model):
     fecha = models.DateField(auto_now_add=True)
     abono = models.DecimalField(max_digits=10,decimal_places=2)
     ficha = models.ForeignKey(FichaPaciente,on_delete=models.CASCADE,null=True,blank=True)
+    transferencia = models.BooleanField(default=False)
+    tarjeta = models.BooleanField(default=False)
+    efectivo = models.BooleanField(default=True)
+
+
+MOVIMIENTO = [
+    ('Ingreso','Ingreso'),
+    ('Egreso','Egreso'),
+]
+class GastosDiarios(models.Model):
+    fecha = models.DateField(auto_now_add=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    concepto = models.ForeignKey(Paciente,on_delete=models.CASCADE,null=True,blank=True)
+    concepto2 = models.CharField(max_length=50,null=True,blank=True)
+    tipo = models.CharField(choices=MOVIMIENTO, max_length=20,blank=True)
+    cantidad = models.DecimalField(max_digits=10,decimal_places=2)
+    transferencia = models.BooleanField(default=False)
+    tarjeta = models.BooleanField(default=False)
+    efectivo = models.BooleanField(default=True)
+
+
+

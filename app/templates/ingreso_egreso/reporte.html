@@ -1,0 +1,63 @@
+{% extends "core/core.html" %}
+{%load static%}
+{%block title%}Ridento-Egreso Ingreso{%endblock%}
+{% block titlepage%}Reporte Ingreso y Egresos{%endblock%}
+{%block body%}
+<div class="row">
+    <div class="col-9"></div>
+    <div class="col-3">Total: $<span id="suma"></span></div>
+</div>
+<table class="table dataTable" id="tablaReporte">
+    <thead>
+        <th>tipo de movimiento</th>
+        <th>Concepto</th>
+        <th>Fecha</th>
+        <th>Cantidad</th>
+        <th class="text-center">Tipo de ingreso</th>
+    </thead>
+    <tbody>
+        {% for item in gastos%}
+            <tr>
+                <td>{{item.tipo}}</td>
+                <td>{%if item.concepto%}{{item.concepto}}{%else%}{{item.concepto2}}{%endif%}</td>
+                <td>{{item.fecha}}</td>
+                <td>{%if item.tipo == "Egreso"%}<span style="display: none;">-</span>{%endif%}{{item.cantidad}}</td>
+                <td class="text-center">
+                    <div class="row">
+                        <div class="col-12">
+                            <i class="fas fa-calendar-day fa-2x"></i>
+                        </div>
+                        <div class="col-12">
+                            <sup>Diarios</sup>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {%endfor%}
+        {% for item in fichas%}
+        <tr>
+            <td>Ingreso</td>
+            <td>{{item.paciente}}</td>
+            <td>{{item.fecha}}</td>
+            <td>{{item.total}}</td>
+            <td class="text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <i class="fas fa-file-medical fa-2x"></i>
+                    </div>
+                    <div class="col-12">
+                        <sup>Fichas</sup>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    {%endfor%}
+    </tbody>
+</table>
+<script src="{%static '/css/dataTables.bootstrap4.min.css'%}"></script>
+
+<script src="{%static '/js/jquery.dataTables.min.js'%}"></script>
+<script src="{%static '/js/dataTables.bootstrap4.min.js'%}"></script>
+<script src="{%static '/js/reporte.js'%}"></script>
+
+{%endblock%}

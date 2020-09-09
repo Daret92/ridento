@@ -18,5 +18,7 @@ urlpatterns = [
     path('new_ficha', views.NewFicha),
     path('getPaciente', views.getPaciente),
     path('seguimiento/<int:id>/<int:paciente>', views.Seguimiento),
+    path('ieIndex', views.ieIndex),
+    path('ieReporte', views.ieReporte),
 ]
     

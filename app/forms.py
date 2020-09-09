@@ -1,5 +1,5 @@
 from django import forms
-from app.models import Tratamientos,Procedimiento,Citas,Paciente,FichaPaciente,IngresoEgresoFicha
+from app.models import Tratamientos,Procedimiento,Citas,Paciente,FichaPaciente,IngresoEgresoFicha,GastosDiarios
 from web.models import Galery,Promos,Somos
 class TratamientosForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -113,7 +113,20 @@ class IngresoEgresoFichaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(IngresoEgresoFichaForm, self).__init__(*args, **kwargs)
         for item in self.fields:
-            self.fields[item].widget.attrs['class'] = 'form-control'
+            if item != "tarjeta" and item != "transferencia" and item != "efectivo":
+                self.fields[item].widget.attrs['class'] = 'form-control'
     class Meta:
         model = IngresoEgresoFicha
         fields = '__all__'
+
+class GastosDiariosForm (forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(GastosDiariosForm, self).__init__(*args, **kwargs)
+        for item in self.fields:
+            if item != "tarjeta" and item != "transferencia" and item != "efectivo":
+                self.fields[item].widget.attrs['class'] = 'form-control'
+    class Meta:
+        model = GastosDiarios
+        exclude = ('user',)
+
+    

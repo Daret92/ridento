@@ -1,0 +1,67 @@
+{% extends "core/core.html" %}
+{%load static%}
+{%block title%}Ridento-Egreso Ingreso{%endblock%}
+{% block titlepage%}Ingreso y Egresos Diarios{%endblock%}
+{%block body%}
+<form method="POST">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="w-25">Tipo de movimiento</th>
+                <th class="w-25">Concepto</th>
+                <th>T. Electronica</th>
+                <th>P. Tarjeta</th>
+                <th>P. Efectivo</th>
+                <th class="w-25">Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{form.tipo}}</td>
+                <td>
+                    <div id="ingreso">
+                        {{form.concepto}}
+                    </div>
+                    <div id="egreso">
+                        {{form.concepto2}}
+                    </div>
+                    <div id="mensaje">Selecciona el movimiento</div>
+                </td>
+                <td class="text-center">{{form.transferencia}}</td>
+                <td class="text-center">{{form.tarjeta}}</td>
+                <td class="text-center">{{form.efectivo}}</td>
+                <td>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                        </div>
+                        {{form.cantidad}}
+                    </div>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {%if id%}
+        <input type="hidden" value="{{id}}" name="id">
+    {%endif%}
+    <br/>
+    <button type="submit" class="btn btn-primary">
+        Guardar Movimiento
+    </button>
+    </div>
+</div>
+</form>
+<style>
+    #ingreso{
+        display: none;
+    }
+    #egreso{
+        display: none;
+    }
+</style>
+<script src="{%static '/js/ieIndex.js'%}"></script>
+{%endblock%}
